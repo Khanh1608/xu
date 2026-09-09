@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xu — Sổ chi tiêu & ngân sách</title>
+<meta name="description" content="Xu ghi chi tiêu theo cách người Việt nói. Quét hoá đơn ngay trên máy. Không tài khoản, không máy chủ.">
+<style>
+  :root { color-scheme: light dark;
+          --ink:#163300; --sub:#5c6b57; --bg:#f6f8f4; --card:#fff; --line:#e3e8de; --accent:#9fe870; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#eef3e9; --sub:#a8b6a2; --bg:#0d120a; --card:#151c11; --line:#26301f; --accent:#9fe870; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  main { max-width: 48rem; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
+  header { text-align:center; margin-bottom: 3rem; }
+  .coin { width:84px; height:84px; margin: 0 auto 1.25rem; display:block; }
+  h1 { font-size: 2.1rem; line-height:1.2; margin:0 0 .5rem; letter-spacing:-.02em; }
+  .tag { color: var(--sub); font-size:1.05rem; margin:0 0 1.75rem; }
+  .cta { display:inline-block; background:var(--accent); color:#163300; font-weight:700;
+         text-decoration:none; padding:.8rem 1.6rem; border-radius:999px; }
+  .cta.soon { background:transparent; color:var(--sub); border:1px solid var(--line); font-weight:600; }
+  h2 { font-size:1.2rem; margin: 2.75rem 0 .75rem; }
+  .grid { display:grid; gap:.75rem; grid-template-columns: repeat(auto-fit, minmax(15rem,1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1rem 1.15rem; }
+  .card h3 { margin:0 0 .3rem; font-size:1rem; }
+  .card p { margin:0; color:var(--sub); font-size:.94rem; }
+  .say { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.92rem;
+         background:var(--card); border:1px solid var(--line); border-radius:10px;
+         padding:.45rem .7rem; display:inline-block; margin:.2rem .25rem .2rem 0; }
+  footer { margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--line);
+           color:var(--sub); font-size:.9rem; text-align:center; }
+  footer a { color:inherit; }
+  ul { padding-left:1.1rem; } li { margin:.3rem 0; }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <svg class="coin" viewBox="0 0 100 100" aria-label="Xu">
+    <circle cx="50" cy="50" r="46" fill="var(--accent)"/>
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#163300" stroke-opacity=".25" stroke-width="2"/>
+    <rect x="39" y="39" width="22" height="22" rx="3" fill="#163300"/>
+  </svg>
+  <h1>Xu — Sổ chi tiêu &amp; ngân sách</h1>
+  <p class="tag">Quét hoá đơn, ghi trong 3 giây. Không tài khoản, không máy chủ.</p>
+  <a class="cta soon" href="#lien-he">Sắp có trên App Store</a>
+</header>
+
+<h2>Ghi như bạn nói</h2>
+<p>
+  <span class="say">cf 25k</span>
+  <span class="say">sáng qua bún bò 40k momo</span>
+  <span class="say">nhận 5tr lương vào VIB</span>
+  <span class="say">cho Nam mượn 500k</span>
+</p>
+<p class="tag" style="font-size:.95rem">Xu hiểu số tiền, danh mục, ví, ngày giờ và cả vay mượn — trong một câu.</p>
+
+<h2>Có gì trong Xu</h2>
+<div class="grid">
+  <div class="card"><h3>Quét biên lai trên máy</h3><p>Chụp hoá đơn hay ảnh chuyển khoản, Xu đọc bằng Vision của Apple. Ảnh không rời khỏi iPhone.</p></div>
+  <div class="card"><h3>Biết tiền đi đâu</h3><p>Còn lại tháng này, tiêu được mỗi ngày, dự báo cuối tháng, báo cáo tuần/tháng/năm.</p></div>
+  <div class="card"><h3>Ví, thẻ, nợ</h3><p>Ví tiền mặt, thẻ tín dụng, ví trả sau, tiết kiệm, tài sản ròng, nhắc hạn thẻ.</p></div>
+  <div class="card"><h3>Ngân sách &amp; mục tiêu</h3><p>Theo tháng, tuần, ngày hoặc danh mục. Mục tiêu để dành. Sổ riêng cho một chuyến đi.</p></div>
+  <div class="card"><h3>Không cần mở app</h3><p>Siri, nút Action, widget, phím tắt và thông báo nhắc ghi mỗi ngày.</p></div>
+  <div class="card"><h3>Trợ lý AI (tuỳ chọn)</h3><p>Kể bằng lời, Xu đề xuất sửa sổ, bạn bấm Duyệt mới đổi. Có sẵn trong Pro, không phải cài đặt gì.</p></div>
+</div>
+
+<h2>Riêng tư, thật sự</h2>
+<ul>
+  <li>Không đăng ký, không email, không mã theo dõi, không quảng cáo.</li>
+  <li>Sổ chi tiêu nằm trên máy bạn và iCloud riêng của bạn — chúng tôi không giữ bản nào.</li>
+  <li>Ảnh biên lai được đọc ngay trên máy và không bao giờ được gửi đi.</li>
+  <li>Khoá app bằng Face ID. Xuất CSV, PDF bất cứ lúc nào.</li>
+</ul>
+<p><a href="privacy.html">Chính sách quyền riêng tư</a> · <a href="terms.html">Điều khoản sử dụng</a></p>
+
+<h2>Giá</h2>
+<p>Bản miễn phí dùng mãi: ghi không giới hạn, 2 ví, 3 ngân sách danh mục, 15 lần quét mỗi tháng,
+báo cáo 12 tháng. <strong>Xu Pro</strong> là khoản mua một lần, dùng trọn đời — không thuê bao,
+không tự gia hạn — mở khoá ví và ngân sách không giới hạn, quét không giới hạn, toàn bộ lịch sử,
+trợ lý AI (có hạn mức tháng), xuất PDF, 6 hệ màu và icon. Chia sẻ được cho gia đình.</p>
+
+<h2 id="lien-he">Hỗ trợ</h2>
+<p>Có câu hỏi, gặp lỗi hay muốn góp ý tính năng? Gửi email, tôi đọc hết:
+<a href="mailto:xusupport@gmail.com">xusupport@gmail.com</a></p>
+
+<footer>
+  Xu · Sổ chi tiêu cho người Việt ·
+  <a href="privacy.html">Quyền riêng tư</a> ·
+  <a href="terms.html">Điều khoản</a>
+</footer>
+
+</main>
+</body>
+</html>

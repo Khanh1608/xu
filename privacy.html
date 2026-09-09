@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quyền riêng tư — Xu</title>
+<style>
+  :root { color-scheme: light dark; --ink:#163300; --sub:#5c6b57; --bg:#f6f8f4; --card:#fff; --line:#e3e8de; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#eef3e9; --sub:#a8b6a2; --bg:#0d120a; --card:#151c11; --line:#26301f; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  main { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  h1 { font-size: 1.9rem; line-height:1.25; margin:0 0 .25rem; }
+  h2 { font-size: 1.15rem; margin: 2.25rem 0 .5rem; }
+  .meta { color: var(--sub); font-size:.9rem; margin-bottom: 2rem; }
+  .card { background: var(--card); border:1px solid var(--line); border-radius:14px; padding:1rem 1.15rem; margin:1rem 0; }
+  table { width:100%; border-collapse: collapse; margin:1rem 0; font-size:.95rem; }
+  th, td { text-align:left; padding:.6rem .5rem; border-bottom:1px solid var(--line); vertical-align: top; }
+  th { color: var(--sub); font-weight:600; }
+  code { background: var(--card); border:1px solid var(--line); border-radius:6px; padding:.1rem .35rem; font-size:.9em; }
+  hr { border:0; border-top:1px solid var(--line); margin:3rem 0; }
+  a { color: inherit; }
+  ul { padding-left: 1.1rem; }
+  li { margin:.35rem 0; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Chính sách quyền riêng tư của Xu</h1>
+<p class="meta">Cập nhật: 08/09/2026 · Áp dụng cho ứng dụng Xu trên iPhone</p>
+
+<div class="card">
+<strong>Tóm tắt trong một câu:</strong> Xu không có tài khoản đăng nhập và không thu thập
+dữ liệu của bạn. Sổ chi tiêu nằm trên máy bạn và trong iCloud riêng của bạn; chỉ trợ lý AI —
+nếu bạn tự bật — mới gửi câu hỏi ra ngoài.
+</div>
+
+<h2>1. Chúng tôi thu thập gì</h2>
+<p><strong>Không gì cả.</strong> Không có đăng ký, không có đăng nhập, không có mã định danh
+người dùng, không có quảng cáo, không có công cụ phân tích hành vi, không có SDK của bên thứ
+ba nào trong ứng dụng. Chúng tôi không lưu sổ chi tiêu của bạn ở đâu.</p>
+<p>Chúng tôi có <strong>một</strong> máy chủ, và nó chỉ phục vụ trợ lý AI. Nó không nhận gì
+khi bạn không dùng trợ lý. Chi tiết ở mục 3.</p>
+
+<h2>2. Dữ liệu của bạn nằm ở đâu</h2>
+<table>
+  <tr><th>Loại</th><th>Nơi lưu</th></tr>
+  <tr><td>Giao dịch, ví, ngân sách, mục tiêu, khoản nợ</td><td>Trên máy bạn. Nếu bạn bật iCloud, dữ liệu đồng bộ qua <em>tài khoản iCloud riêng của bạn</em> — chúng tôi không truy cập được.</td></tr>
+  <tr><td>Ảnh biên lai bạn quét</td><td>Được đọc <strong>ngay trên máy</strong> bằng công nghệ Vision của Apple. Ảnh không được tải lên bất kỳ đâu.</td></tr>
+  <tr><td>Sao lưu bạn tự xuất (CSV, PDF)</td><td>Nơi bạn chọn lưu.</td></tr>
+</table>
+
+<h2>3. Trợ lý AI — phần duy nhất gửi dữ liệu ra ngoài</h2>
+<p>Trợ lý AI <strong>mặc định tắt</strong>. Không bật thì không có gì rời khỏi máy bạn.</p>
+<p>Khi bạn đã bật và <strong>chủ động hỏi</strong> một câu, dữ liệu đi theo đường này:</p>
+<div class="card">
+  câu hỏi của bạn → <strong>máy chủ của Xu</strong> → <strong>Google Gemini</strong> → câu trả lời
+</div>
+<ul>
+  <li>Thứ được gửi: <strong>câu bạn gõ</strong> và phần dữ liệu cần để trả lời (tên khoản chi,
+      số tiền, danh mục, ngày).</li>
+  <li>Số dư ví, dư nợ thẻ và tài sản ròng <strong>chỉ</strong> được gửi nếu bạn bật riêng công tắc
+      “Cho AI biết số dư”. Mặc định là tắt.</li>
+  <li>Ảnh biên lai <strong>không bao giờ</strong> được gửi đi, kể cả khi bật AI.</li>
+</ul>
+<p><strong>Máy chủ của Xu làm gì:</strong> kiểm bạn đã mua Xu Pro, đếm số lượt hỏi trong tháng,
+rồi chuyển tiếp sang Google. Nó <strong>không ghi câu hỏi, không ghi câu trả lời</strong>, và
+không biết bạn là ai — không có tài khoản để biết. Thứ duy nhất nó lưu là hai con số:</p>
+<ul>
+  <li>mã lần mua hàng do Apple cấp (một chuỗi số, không kèm tên, email hay thiết bị);</li>
+  <li>số lượt bạn đã hỏi trong tháng, để chia hạn mức cho công bằng.</li>
+</ul>
+<p><strong>Về phía Google:</strong> chúng tôi dùng gói <strong>trả phí</strong> của Gemini,
+loại mà Google <em>không</em> dùng dữ liệu gửi lên để huấn luyện mô hình. Phần Google xử lý
+tuân theo chính sách của Google, không phải của chúng tôi.</p>
+<p>Nếu máy bạn có Apple Intelligence, một số câu được trả lời <strong>ngay trên máy</strong> và
+không đi đâu cả.</p>
+
+<h2>4. Tệp cấu hình từ xa</h2>
+<p>Mỗi ngày nhiều nhất một lần, Xu tải một tệp cấu hình tĩnh
+(<code>app-config.json</code>) từ trang web này, để chúng tôi có thể tắt gấp một tính năng nếu
+nó hỏng. Đây là <strong>tải xuống một chiều</strong>: không gửi kèm dữ liệu, không mã định danh,
+không cookie. Máy chủ web chỉ ghi nhận một lượt tải như mọi lượt truy cập trang web thông thường.
+Bạn tắt hẳn việc này trong <em>Cài đặt → Quyền riêng tư → Tắt việc tải cấu hình</em>.</p>
+
+<h2>5. Thanh toán</h2>
+<p>Xu Pro là khoản mua một lần qua App Store của Apple. Chúng tôi không nhìn thấy và không
+lưu thông tin thẻ của bạn — Apple xử lý toàn bộ.</p>
+
+<h2>6. Thông báo</h2>
+<p>Nhắc nhở hằng ngày, nhắc hạn thẻ, bản tin buổi sáng đều được tạo <strong>trên máy bạn</strong>.
+Không có thông báo đẩy từ máy chủ.</p>
+
+<h2>7. Trẻ em</h2>
+<p>Xu không nhắm tới trẻ em dưới 13 tuổi và không thu thập dữ liệu từ bất kỳ ai.</p>
+
+<h2>8. Quyền của bạn</h2>
+<p>Chúng tôi không giữ sổ chi tiêu của bạn, nên không có gì để yêu cầu chúng tôi cung cấp hay
+xoá. Bạn toàn quyền với dữ liệu của mình: xuất ra CSV/PDF bất cứ lúc nào, hoặc xoá sạch bằng
+<em>Cài đặt → Dữ liệu → Bắt đầu lại từ đầu</em>. Gỡ ứng dụng là xoá dữ liệu trên máy;
+dữ liệu iCloud xoá trong Cài đặt iPhone → Apple ID → iCloud.</p>
+<p>Bộ đếm lượt hỏi AI gắn với mã lần mua hàng chứ không gắn với bạn, và tự làm mới mỗi tháng.
+Muốn xoá thì viết cho chúng tôi kèm mã đó.</p>
+
+<h2>9. Thay đổi chính sách</h2>
+<p>Nếu chính sách thay đổi, chúng tôi cập nhật trang này và đổi ngày ở đầu trang.</p>
+
+<h2>10. Liên hệ</h2>
+<p>Email: <a href="mailto:xusupport@gmail.com">xusupport@gmail.com</a></p>
+
+<hr>
+
+<h1 id="en">Privacy Policy for Xu</h1>
+<p class="meta">Updated: 8 September 2026 · Applies to the Xu iPhone app</p>
+
+<div class="card">
+<strong>In one sentence:</strong> Xu has no login and collects nothing about you. Your records
+stay on your device and in your own iCloud; only the AI assistant — if you switch it on — sends
+your questions out.
+</div>
+
+<h2>1. What we collect</h2>
+<p><strong>Nothing.</strong> There is no sign-up, no login, no user identifier, no advertising,
+no behavioural analytics, and no third-party SDK in the app. We do not store your records
+anywhere.</p>
+<p>We run <strong>one</strong> server, and it exists only to serve the AI assistant. It receives
+nothing when you don't use the assistant. Details in section 3.</p>
+
+<h2>2. Where your data lives</h2>
+<table>
+  <tr><th>Type</th><th>Stored</th></tr>
+  <tr><td>Transactions, wallets, budgets, goals, debts</td><td>On your device. With iCloud enabled, it syncs through <em>your own iCloud account</em> — we cannot access it.</td></tr>
+  <tr><td>Receipt photos you scan</td><td>Read <strong>entirely on-device</strong> using Apple’s Vision framework. Images are never uploaded.</td></tr>
+  <tr><td>Backups you export (CSV, PDF)</td><td>Wherever you choose to save them.</td></tr>
+</table>
+
+<h2>3. The AI assistant — the only feature that sends data out</h2>
+<p>The AI assistant is <strong>off by default</strong>. Leave it off and nothing leaves your device.</p>
+<p>Once you enable it and <strong>actively ask</strong> a question, the data travels like this:</p>
+<div class="card">
+  your question → <strong>Xu’s server</strong> → <strong>Google Gemini</strong> → the answer
+</div>
+<ul>
+  <li>What is sent: <strong>the text you typed</strong> plus the entries needed to answer it
+      (item name, amount, category, date).</li>
+  <li>Wallet balances, card debt and net worth are sent <strong>only</strong> if you separately
+      enable “Let AI see balances”. It is off by default.</li>
+  <li>Receipt images are <strong>never</strong> sent, even with AI enabled.</li>
+</ul>
+<p><strong>What Xu’s server does:</strong> checks that you bought Xu Pro, counts your questions
+for the month, and forwards the request to Google. It <strong>logs neither questions nor
+answers</strong>, and it does not know who you are — there is no account for it to know. The only
+things it stores are two numbers:</p>
+<ul>
+  <li>the purchase identifier issued by Apple (a string of digits, with no name, email or device
+      attached);</li>
+  <li>how many questions you have asked this month, so the allowance is shared fairly.</li>
+</ul>
+<p><strong>On Google’s side:</strong> we use the <strong>paid</strong> Gemini tier, the one where
+Google does <em>not</em> use submitted data to train its models. What Google does is governed by
+Google’s policies, not ours.</p>
+<p>If your device supports Apple Intelligence, some answers are produced <strong>on the device
+itself</strong> and go nowhere.</p>
+
+<h2>4. Remote configuration file</h2>
+<p>At most once a day, Xu downloads a static configuration file (<code>app-config.json</code>) from
+this website so we can switch off a feature quickly if it breaks. This is a <strong>one-way
+download</strong>: no data is attached, no identifiers, no cookies. You can disable it entirely in
+<em>Settings → Privacy → Stop downloading config</em>.</p>
+
+<h2>5. Payments</h2>
+<p>Xu Pro is a one-time purchase through Apple’s App Store. We never see or store your payment
+details; Apple handles everything.</p>
+
+<h2>6. Notifications</h2>
+<p>Daily reminders, card due-date alerts and the morning brief are all generated
+<strong>on your device</strong>. There are no server push notifications.</p>
+
+<h2>7. Children</h2>
+<p>Xu is not directed at children under 13 and collects no data from anyone.</p>
+
+<h2>8. Your rights</h2>
+<p>Because we hold none of your records, there is nothing to request from us or ask us to delete.
+You control everything: export to CSV/PDF any time, or erase it all with <em>Settings → Data →
+Start over</em>. Deleting the app removes on-device data; iCloud data is removed in iPhone
+Settings → Apple ID → iCloud.</p>
+<p>The AI usage counter is tied to a purchase identifier rather than to you, and resets monthly.
+If you want it removed, email us with that identifier.</p>
+
+<h2>9. Changes</h2>
+<p>If this policy changes we update this page and the date at the top.</p>
+
+<h2>10. Contact</h2>
+<p>Email: <a href="mailto:xusupport@gmail.com">xusupport@gmail.com</a></p>
+
+</main>
+</body>
+</html>
