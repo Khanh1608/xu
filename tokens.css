@@ -1,0 +1,42 @@
+/* Hallmark · macrostructure: Marquee Hero · genre: atmospheric · tone: điềm tĩnh, riêng tư
+ * theme: Midnight + lime · nav: N5 floating pill · footer: Ft5 statement
+ * paper: dark (L 14%) · display: high-contrast-serif · accent: chromatic lime 135°
+ */
+:root {
+  /* Mực và giấy — nền gần đen như hai trang tham chiếu, nhưng ngả xanh rừng của Xu */
+  --color-ink:        oklch(14% 0.012 150);
+  --color-ink-2:      oklch(18% 0.014 150);
+  --color-ink-3:      oklch(23% 0.016 150);
+  --color-paper:      oklch(97% 0.012 120);
+  --color-paper-2:    oklch(84% 0.010 120);
+  --color-paper-3:    oklch(66% 0.012 140);
+
+  /* Lime của Xu, chuyển sang OKLCH để giữ đúng sắc trên nền tối */
+  --color-accent:     oklch(88% 0.19 135);
+  --color-accent-2:   oklch(72% 0.17 140);
+  --color-accent-ink: oklch(24% 0.06 150);
+  --color-warm:       oklch(78% 0.12 75);
+  --color-focus:      oklch(88% 0.19 135);
+
+  --font-display: "Playfair Display", "Times New Roman", serif;
+  --font-body:    "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --text-display:   clamp(2.75rem, 7vw, 5.5rem);
+  --text-display-s: clamp(2.1rem, 5vw, 3.4rem);
+  --text-2xl:       clamp(1.5rem, 3vw, 2rem);
+  --text-lg:        1.125rem;
+  --text-base:      1rem;
+  --text-sm:        0.875rem;
+  --text-xs:        0.75rem;
+
+  --space-2xs: 4px;  --space-xs: 8px;   --space-sm: 16px;
+  --space-md: 24px;  --space-lg: 40px;  --space-xl: 64px;
+  --space-2xl: 96px; --space-3xl: 144px;
+
+  --rule: 1px solid oklch(100% 0 0 / 0.09);
+  --radius-sm: 10px; --radius-md: 18px; --radius-lg: 28px; --radius-pill: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms; --dur-mid: 320ms;
+}

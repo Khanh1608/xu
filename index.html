@@ -3,95 +3,306 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Xu — Sổ chi tiêu & ngân sách</title>
-<meta name="description" content="Xu ghi chi tiêu theo cách người Việt nói. Quét hoá đơn ngay trên máy. Không tài khoản, không máy chủ.">
+<title>Xu — Sổ chi tiêu &amp; ngân sách</title>
+<meta name="description" content="Ghi chi tiêu bằng một câu tiếng Việt. Quét biên lai ngay trên máy. Không tài khoản, không theo dõi.">
+<meta property="og:title" content="Xu — Sổ chi tiêu &amp; ngân sách">
+<meta property="og:description" content="Ghi chi tiêu bằng một câu tiếng Việt. Quét biên lai ngay trên máy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
 <style>
-  :root { color-scheme: light dark;
-          --ink:#163300; --sub:#5c6b57; --bg:#f6f8f4; --card:#fff; --line:#e3e8de; --accent:#9fe870; }
-  @media (prefers-color-scheme: dark) {
-    :root { --ink:#eef3e9; --sub:#a8b6a2; --bg:#0d120a; --card:#151c11; --line:#26301f; --accent:#9fe870; } }
-  * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-         font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
-  main { max-width: 48rem; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; }
-  header { text-align:center; margin-bottom: 3rem; }
-  .coin { width:84px; height:84px; margin: 0 auto 1.25rem; display:block; }
-  h1 { font-size: 2.1rem; line-height:1.2; margin:0 0 .5rem; letter-spacing:-.02em; }
-  .tag { color: var(--sub); font-size:1.05rem; margin:0 0 1.75rem; }
-  .cta { display:inline-block; background:var(--accent); color:#163300; font-weight:700;
-         text-decoration:none; padding:.8rem 1.6rem; border-radius:999px; }
-  .cta.soon { background:transparent; color:var(--sub); border:1px solid var(--line); font-weight:600; }
-  h2 { font-size:1.2rem; margin: 2.75rem 0 .75rem; }
-  .grid { display:grid; gap:.75rem; grid-template-columns: repeat(auto-fit, minmax(15rem,1fr)); }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1rem 1.15rem; }
-  .card h3 { margin:0 0 .3rem; font-size:1rem; }
-  .card p { margin:0; color:var(--sub); font-size:.94rem; }
-  .say { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.92rem;
-         background:var(--card); border:1px solid var(--line); border-radius:10px;
-         padding:.45rem .7rem; display:inline-block; margin:.2rem .25rem .2rem 0; }
-  footer { margin-top:3.5rem; padding-top:1.5rem; border-top:1px solid var(--line);
-           color:var(--sub); font-size:.9rem; text-align:center; }
-  footer a { color:inherit; }
-  ul { padding-left:1.1rem; } li { margin:.3rem 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { overflow-x: clip; }
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-style: normal; font-weight: 400; letter-spacing: -0.02em; margin: 0; overflow-wrap: anywhere; min-width: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+  .eyebrow {
+    font-size: var(--text-xs); letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-paper-3); font-weight: 500; margin-bottom: var(--space-sm);
+  }
+
+  /* ── Nav: viên thuốc nổi ─────────────────────────────── */
+  .nav {
+    position: fixed; inset-block-start: 14px; inset-inline: 0; z-index: 20;
+    display: flex; justify-content: center; pointer-events: none;
+  }
+  .nav-inner {
+    pointer-events: auto;
+    display: flex; align-items: center; gap: var(--space-md);
+    padding: 8px 8px 8px 20px;
+    background: oklch(18% 0.014 150 / 0.72);
+    backdrop-filter: blur(14px);
+    border: var(--rule); border-radius: var(--radius-pill);
+    max-width: calc(100% - 1.5rem);
+  }
+  .brand { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.02em; text-decoration: none; white-space: nowrap; }
+  .nav-links { display: flex; gap: var(--space-md); }
+  .nav-links a {
+    font-size: var(--text-sm); color: var(--color-paper-3); text-decoration: none;
+    white-space: nowrap; transition: color var(--dur-fast) var(--ease-out);
+  }
+  .nav-links a:hover { color: var(--color-paper); }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    padding: 10px 20px; border-radius: var(--radius-pill);
+    background: var(--color-accent); color: var(--color-accent-ink);
+    font-size: var(--text-sm); font-weight: 600; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  }
+  .pill:hover { transform: translateY(-1px); background: var(--color-accent-2); }
+  .pill:active { transform: translateY(0); }
+  .pill.ghost {
+    background: transparent; color: var(--color-paper-2);
+    border: var(--rule);
+  }
+  .pill.ghost:hover { background: oklch(100% 0 0 / 0.06); color: var(--color-paper); }
+
+  /* ── Hero ────────────────────────────────────────────── */
+  .hero { position: relative; padding: clamp(9rem, 20vh, 13rem) 0 var(--space-2xl); text-align: center; }
+  .glow {
+    position: absolute; inset-block-start: -18%; inset-inline-start: 50%;
+    translate: -50% 0; width: min(1100px, 130vw); aspect-ratio: 1;
+    background: radial-gradient(closest-side,
+      oklch(88% 0.19 135 / 0.20), oklch(72% 0.17 140 / 0.08) 45%, transparent 72%);
+    pointer-events: none; z-index: 0;
+  }
+  /* Loại .glow ra: nếu không, quy tắc này cùng độ ưu tiên và viết sau sẽ ghi đè
+     position:absolute của nó thành relative, và khối cao 1100px nhảy vào dòng chảy. */
+  .hero > *:not(.glow) { position: relative; z-index: 1; }
+  .hero h1 { font-size: var(--text-display); line-height: 1.02; margin-bottom: var(--space-md); }
+  .hero h1 .lit { color: var(--color-accent); }
+  .hero-sub {
+    max-width: 34rem; margin: 0 auto var(--space-lg);
+    color: var(--color-paper-2); font-size: var(--text-lg); line-height: 1.65;
+  }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .hero-note { margin-top: var(--space-md); font-size: var(--text-sm); color: var(--color-paper-3); }
+
+  /* ── Câu nói ─────────────────────────────────────────── */
+  .said { padding: var(--space-2xl) 0; border-block-start: var(--rule); }
+  .said-head { text-align: center; margin-bottom: var(--space-xl); }
+  .said-head h2 { font-size: var(--text-display-s); }
+  .lines { display: grid; gap: 12px; max-width: 46rem; margin-inline: auto; }
+  .line {
+    display: grid; grid-template-columns: 1fr auto; gap: var(--space-sm); align-items: center;
+    padding: 18px 22px; border: var(--rule); border-radius: var(--radius-md);
+    background: linear-gradient(180deg, oklch(100% 0 0 / 0.03), transparent);
+  }
+  .line q {
+    font-size: var(--text-lg); quotes: "“" "”";
+    color: var(--color-paper);
+  }
+  .line .out { font-size: var(--text-sm); color: var(--color-accent); font-weight: 500; white-space: nowrap; }
+
+  /* ── Tính năng ───────────────────────────────────────── */
+  .feat { padding: var(--space-2xl) 0; border-block-start: var(--rule); }
+  .feat-head { max-width: 34rem; margin-bottom: var(--space-xl); }
+  .feat-head h2 { font-size: var(--text-display-s); margin-bottom: var(--space-sm); }
+  .feat-head p { color: var(--color-paper-2); }
+  .grid { display: grid; gap: 1px; background: oklch(100% 0 0 / 0.09);
+          border: var(--rule); border-radius: var(--radius-md); overflow: hidden;
+          grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+  .cell { background: var(--color-ink); padding: var(--space-lg) var(--space-md); }
+  .cell .n { font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); display: block; margin-bottom: 14px; }
+  .cell h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .cell p { color: var(--color-paper-3); font-size: 0.94rem; }
+
+  /* ── Riêng tư ────────────────────────────────────────── */
+  .privacy { padding: var(--space-2xl) 0; border-block-start: var(--rule); }
+  .privacy-box {
+    border: 1px solid oklch(88% 0.19 135 / 0.24); border-radius: var(--radius-lg);
+    padding: clamp(var(--space-lg), 5vw, var(--space-xl));
+    background: radial-gradient(120% 100% at 0% 0%, oklch(88% 0.19 135 / 0.07), transparent 60%);
+  }
+  .privacy-box h2 { font-size: var(--text-2xl); margin-bottom: var(--space-md); }
+  .claims { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none;
+            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+  .claims li { display: flex; gap: 10px; align-items: flex-start; color: var(--color-paper-2); font-size: 0.95rem; }
+  .claims .tick { color: var(--color-accent); flex: none; margin-top: 2px; }
+
+  /* ── Giá ─────────────────────────────────────────────── */
+  .price { padding: var(--space-2xl) 0; border-block-start: var(--rule); }
+  .price-grid { display: grid; gap: var(--space-md);
+                grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+  .plan { border: var(--rule); border-radius: var(--radius-md); padding: var(--space-lg); }
+  .plan.pro { border-color: oklch(88% 0.19 135 / 0.35); background: linear-gradient(180deg, oklch(88% 0.19 135 / 0.05), transparent); }
+  .plan h3 { font-size: var(--text-2xl); margin-bottom: 4px; }
+  .plan .tag { font-size: var(--text-sm); color: var(--color-paper-3); margin-bottom: var(--space-md); }
+  .plan ul { margin: 0 0 var(--space-md); padding-left: 1.1rem; color: var(--color-paper-2); font-size: 0.94rem; }
+  .plan li { margin: 6px 0; }
+
+  /* ── Chân trang ──────────────────────────────────────── */
+  .foot { padding: var(--space-2xl) 0 var(--space-xl); border-block-start: var(--rule); }
+  .foot h2 { font-size: var(--text-display-s); max-width: 20ch; margin-bottom: var(--space-md); }
+  .foot-meta {
+    margin-top: var(--space-xl); padding-top: var(--space-md); border-block-start: var(--rule);
+    display: flex; flex-wrap: wrap; gap: var(--space-md); justify-content: space-between;
+    font-size: var(--text-sm); color: var(--color-paper-3);
+  }
+  .foot-meta nav { display: flex; gap: var(--space-md); flex-wrap: wrap; }
+  .foot-meta a { text-decoration: none; }
+  .foot-meta a:hover { color: var(--color-paper); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .line { grid-template-columns: 1fr; }
+    .line .out { white-space: normal; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
 </style>
 </head>
 <body>
-<main>
 
-<header>
-  <svg class="coin" viewBox="0 0 100 100" aria-label="Xu">
-    <circle cx="50" cy="50" r="46" fill="var(--accent)"/>
-    <circle cx="50" cy="50" r="38" fill="none" stroke="#163300" stroke-opacity=".25" stroke-width="2"/>
-    <rect x="39" y="39" width="22" height="22" rx="3" fill="#163300"/>
-  </svg>
-  <h1>Xu — Sổ chi tiêu &amp; ngân sách</h1>
-  <p class="tag">Quét hoá đơn, ghi trong 3 giây. Không tài khoản, không máy chủ.</p>
-  <a class="cta soon" href="#lien-he">Sắp có trên App Store</a>
-</header>
-
-<h2>Ghi như bạn nói</h2>
-<p>
-  <span class="say">cf 25k</span>
-  <span class="say">sáng qua bún bò 40k momo</span>
-  <span class="say">nhận 5tr lương vào VIB</span>
-  <span class="say">cho Nam mượn 500k</span>
-</p>
-<p class="tag" style="font-size:.95rem">Xu hiểu số tiền, danh mục, ví, ngày giờ và cả vay mượn — trong một câu.</p>
-
-<h2>Có gì trong Xu</h2>
-<div class="grid">
-  <div class="card"><h3>Quét biên lai trên máy</h3><p>Chụp hoá đơn hay ảnh chuyển khoản, Xu đọc bằng Vision của Apple. Ảnh không rời khỏi iPhone.</p></div>
-  <div class="card"><h3>Biết tiền đi đâu</h3><p>Còn lại tháng này, tiêu được mỗi ngày, dự báo cuối tháng, báo cáo tuần/tháng/năm.</p></div>
-  <div class="card"><h3>Ví, thẻ, nợ</h3><p>Ví tiền mặt, thẻ tín dụng, ví trả sau, tiết kiệm, tài sản ròng, nhắc hạn thẻ.</p></div>
-  <div class="card"><h3>Ngân sách &amp; mục tiêu</h3><p>Theo tháng, tuần, ngày hoặc danh mục. Mục tiêu để dành. Sổ riêng cho một chuyến đi.</p></div>
-  <div class="card"><h3>Không cần mở app</h3><p>Siri, nút Action, widget, phím tắt và thông báo nhắc ghi mỗi ngày.</p></div>
-  <div class="card"><h3>Trợ lý AI (tuỳ chọn)</h3><p>Kể bằng lời, Xu đề xuất sửa sổ, bạn bấm Duyệt mới đổi. Có sẵn trong Pro, không phải cài đặt gì.</p></div>
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">Xu</a>
+    <div class="nav-links">
+      <a href="#cach-ghi">Cách ghi</a>
+      <a href="#tinh-nang">Tính năng</a>
+      <a href="#rieng-tu">Riêng tư</a>
+      <a href="#gia">Giá</a>
+    </div>
+    <a class="pill" href="#gia">Sắp có</a>
+  </div>
 </div>
 
-<h2>Riêng tư, thật sự</h2>
-<ul>
-  <li>Không đăng ký, không email, không mã theo dõi, không quảng cáo.</li>
-  <li>Sổ chi tiêu nằm trên máy bạn và iCloud riêng của bạn — chúng tôi không giữ bản nào.</li>
-  <li>Ảnh biên lai được đọc ngay trên máy và không bao giờ được gửi đi.</li>
-  <li>Khoá app bằng Face ID. Xuất CSV, PDF bất cứ lúc nào.</li>
-</ul>
-<p><a href="privacy.html">Chính sách quyền riêng tư</a> · <a href="terms.html">Điều khoản sử dụng</a></p>
+<main id="top">
 
-<h2>Giá</h2>
-<p>Bản miễn phí dùng mãi: ghi không giới hạn, 2 ví, 3 ngân sách danh mục, 15 lần quét mỗi tháng,
-báo cáo 12 tháng. <strong>Xu Pro</strong> là khoản mua một lần, dùng trọn đời — không thuê bao,
-không tự gia hạn — mở khoá ví và ngân sách không giới hạn, quét không giới hạn, toàn bộ lịch sử,
-trợ lý AI (có hạn mức tháng), xuất PDF, 6 hệ màu và icon. Chia sẻ được cho gia đình.</p>
+  <section class="hero">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Ghi chi tiêu nhanh<br>như <span class="lit">nói một câu</span></h1>
+      <p class="hero-sub">
+        Gõ hoặc đọc “cf 25k” là xong. Xu hiểu tiếng Việt đời thường —
+        số tiền, danh mục, ví, ngày giờ, cả vay mượn.
+      </p>
+      <div class="cta-row">
+        <a class="pill" href="#gia">Sắp có trên App Store</a>
+        <a class="pill ghost" href="#cach-ghi">Xem cách ghi</a>
+      </div>
+      <p class="hero-note">iPhone · tiếng Việt · không cần tài khoản</p>
+    </div>
+  </section>
 
-<h2 id="lien-he">Hỗ trợ</h2>
-<p>Có câu hỏi, gặp lỗi hay muốn góp ý tính năng? Gửi email, tôi đọc hết:
-<a href="mailto:xusupport@gmail.com">xusupport@gmail.com</a></p>
+  <section class="said" id="cach-ghi">
+    <div class="wrap">
+      <div class="said-head">
+        <p class="eyebrow">Nói sao ghi vậy</p>
+        <h2>Một câu, Xu tự tách ra</h2>
+      </div>
+      <div class="lines">
+        <div class="line"><q>cf 25k</q><span class="out">Cà phê · 25.000₫</span></div>
+        <div class="line"><q>sáng qua bún bò 40k momo</q><span class="out">Ăn uống · hôm qua · ví MoMo</span></div>
+        <div class="line"><q>nhận 5tr lương vào VIB</q><span class="out">Thu nhập · 5.000.000₫ · ví VIB</span></div>
+        <div class="line"><q>cho Nam mượn 500k</q><span class="out">Cho vay · Nam</span></div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  Xu · Sổ chi tiêu cho người Việt ·
-  <a href="privacy.html">Quyền riêng tư</a> ·
-  <a href="terms.html">Điều khoản</a>
-</footer>
+  <section class="feat" id="tinh-nang">
+    <div class="wrap">
+      <div class="feat-head">
+        <p class="eyebrow">Có gì trong Xu</p>
+        <h2>Đủ để bỏ hẳn cuốn sổ giấy</h2>
+        <p>Ghi trong ba giây, và biết tiền đi đâu mà không phải tự cộng.</p>
+      </div>
+      <div class="grid">
+        <div class="cell"><span class="n">01</span><h3>Quét biên lai trên máy</h3>
+          <p>Chụp hoá đơn hay ảnh chuyển khoản. Xu đọc bằng Vision của Apple — ảnh không rời khỏi iPhone.</p></div>
+        <div class="cell"><span class="n">02</span><h3>Đọc bằng giọng nói</h3>
+          <p>Bấm micro, đọc một câu. Nhận dạng tiếng Việt ngay trên máy, không cần mạng.</p></div>
+        <div class="cell"><span class="n">03</span><h3>Biết tiền đi đâu</h3>
+          <p>Còn lại tháng này, tiêu được mỗi ngày, dự báo cuối tháng, báo cáo tuần và năm.</p></div>
+        <div class="cell"><span class="n">04</span><h3>Ví, thẻ, nợ</h3>
+          <p>Tiền mặt, thẻ tín dụng, ví trả sau, tiết kiệm, tài sản ròng, nhắc hạn thanh toán thẻ.</p></div>
+        <div class="cell"><span class="n">05</span><h3>Ngân sách &amp; mục tiêu</h3>
+          <p>Theo tháng, tuần, ngày hoặc danh mục. Sổ riêng cho một chuyến đi hay một sự kiện.</p></div>
+        <div class="cell"><span class="n">06</span><h3>Không cần mở app</h3>
+          <p>Siri, nút Action, widget, phím tắt và thông báo nhắc ghi mỗi ngày.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" id="rieng-tu">
+    <div class="wrap">
+      <div class="privacy-box">
+        <p class="eyebrow">Riêng tư, thật sự</p>
+        <h2>Sổ của bạn không đi đâu cả</h2>
+        <ul class="claims">
+          <li><span class="tick">✓</span><span>Không đăng ký, không email, không mã theo dõi, không quảng cáo.</span></li>
+          <li><span class="tick">✓</span><span>Dữ liệu nằm trên máy bạn và iCloud riêng của bạn — chúng tôi không giữ bản nào.</span></li>
+          <li><span class="tick">✓</span><span>Ảnh biên lai và giọng nói được xử lý ngay trên máy, không bao giờ gửi đi.</span></li>
+          <li><span class="tick">✓</span><span>Khoá app bằng Face ID. Xuất CSV hay PDF bất cứ lúc nào.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="price" id="gia">
+    <div class="wrap">
+      <p class="eyebrow">Giá</p>
+      <h2 style="font-size:var(--text-display-s); margin-bottom:var(--space-lg)">Trả một lần, dùng mãi</h2>
+      <div class="price-grid">
+        <div class="plan">
+          <h3>Miễn phí</h3>
+          <p class="tag">Dùng được lâu dài</p>
+          <ul>
+            <li>Ghi không giới hạn</li>
+            <li>2 ví, 3 ngân sách theo danh mục</li>
+            <li>15 lần quét ảnh mỗi tháng</li>
+            <li>Báo cáo 12 tháng gần nhất</li>
+          </ul>
+        </div>
+        <div class="plan pro">
+          <h3>Xu Pro</h3>
+          <p class="tag">Mua một lần · không thuê bao, không tự gia hạn</p>
+          <ul>
+            <li>Ví, ngân sách và quét ảnh không giới hạn</li>
+            <li>Toàn bộ lịch sử, xuất PDF</li>
+            <li>Trợ lý AI có hạn mức mỗi tháng</li>
+            <li>6 hệ màu và icon · chia sẻ được cho gia đình</li>
+          </ul>
+          <a class="pill" href="mailto:xusupport@gmail.com?subject=Báo%20tôi%20khi%20Xu%20lên%20App%20Store">Báo tôi khi phát hành</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="foot">
+    <div class="wrap">
+      <h2>Sổ chi tiêu cho người Việt, làm tại Việt Nam.</h2>
+      <p style="color:var(--color-paper-2); max-width:36rem">
+        Có câu hỏi, gặp lỗi, hay muốn góp ý tính năng? Gửi email — tôi đọc hết.
+      </p>
+      <p style="margin-top:var(--space-md)">
+        <a class="pill ghost" href="mailto:xusupport@gmail.com">xusupport@gmail.com</a>
+      </p>
+      <div class="foot-meta">
+        <span>© 2026 Xu</span>
+        <nav>
+          <a href="privacy.html">Quyền riêng tư</a>
+          <a href="terms.html">Điều khoản</a>
+        </nav>
+      </div>
+    </div>
+  </section>
 
 </main>
 </body>
