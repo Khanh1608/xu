@@ -4,5 +4,7 @@
     "ai": true,
     "scan": true
   },
+  "usdRate": 26300,
+  "_usdRate": "Tỷ giá bán USD/VND để ô Gõ nhanh quy đổi khi người dùng gõ '20$'. Người dùng tự đặt trong Cài đặt thì số của họ thắng. Cập nhật khi lệch quá vài phần trăm.",
   "notice": null
 }
